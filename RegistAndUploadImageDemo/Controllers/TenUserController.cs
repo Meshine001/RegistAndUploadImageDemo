@@ -100,7 +100,6 @@ namespace RegistAndUploadImageDemo.Controllers
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="ID,UserName,UserPassword,PhoneType,Gender,Birthday,JoinedDate,PCoin,OuterScore,InnerScore,Energy,Hobby,Quote,Lati,Longi")] TenUser tenuser)
         {
          
@@ -108,9 +107,9 @@ namespace RegistAndUploadImageDemo.Controllers
             {      
                 db.Entry(tenuser).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new TenResult().Ok());
             }
-            return View(tenuser);
+            return Json(new TenResult().Error());
         }
 
         // GET: /TenUser/Delete/5
