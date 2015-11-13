@@ -1,0 +1,254 @@
+﻿@model RegistAndUploadImageDemo.Models.TenUser
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("UpdateAwatar", "TenUser", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+ <div class="form-horizontal">
+     <h4>UpdateAwatar</h4>
+     <hr />
+     @Html.HiddenFor(model => model.ID)
+     @if (Model.FilePaths.Any(f => f.FileType == FileType.Avatar))
+     {
+         <div class="form-group">
+             <span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+             <div class="col-md-10">
+                 <img src="~/File?id=@Model.FilePaths.First(f => f.FileType == FileType.Avatar).FilePathId" alt="avatar" />
+             </div>
+         </div>
+     }
+     <div class="form-group">
+         @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+         <div class="col-md-10">
+             <input type="file" id="Avatar" name="upload" />
+         </div>
+     </div>
+
+     <div class="form-group">
+         <div class="col-md-offset-2 col-md-10">
+             <input type="submit" value="UpdateAwatar" class="btn btn-default" />
+         </div>
+     </div>
+
+ </div>   
+}
+
+@using (Html.BeginForm("UploadFiles", "TenUser", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        <h4>UploadPhotos</h4>
+        <hr />
+        @Html.HiddenFor(model => model.ID)
+        @if (Model.FilePaths.Any(f => f.FileType == FileType.Photo))
+        {   
+            foreach (var item in Model.FilePaths.Where(f => f.FileType == FileType.Photo)) 
+            { 
+                
+                <div class="form-group">
+                <span class="control-label col-md-2"><strong>FileId:@item.FilePathId</strong></span>
+                <div class="col-md-10">
+                    <img src="~/File?id=@item.FilePathId" alt="photo" />
+                </div>
+            </div>
+            }                   
+        }
+
+        <div class="form-group">
+            @Html.Label("Photo", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="photo" name="uploads" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Photo", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="photo1" name="uploads" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="UploadPhoto" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+}
+
+@using (Html.BeginForm("DeleteFile", "TenUser", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        <h4>DeletePhotos</h4>
+        <hr />
+
+        "TenUserID:"@Html.DisplayFor(model => model.ID)
+        <div class="form-group">
+    
+            @Html.Label("TenUserId", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="tenuserId" name="tenuserId" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("PhotoID", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="photo" name="fileId" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="DeletePhotos" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+}
+
+
+
+@using (Html.BeginForm("Edit", "TenUser", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>TenUser</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserPassword, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserPassword)
+                @Html.ValidationMessageFor(model => model.UserPassword)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PhoneType)
+                @Html.ValidationMessageFor(model => model.PhoneType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gender)
+                @Html.ValidationMessageFor(model => model.Gender)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Birthday, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Birthday)
+                @Html.ValidationMessageFor(model => model.Birthday)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JoinedDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JoinedDate)
+                @Html.ValidationMessageFor(model => model.JoinedDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PCoin, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PCoin)
+                @Html.ValidationMessageFor(model => model.PCoin)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OuterScore, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OuterScore)
+                @Html.ValidationMessageFor(model => model.OuterScore)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InnerScore, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InnerScore)
+                @Html.ValidationMessageFor(model => model.InnerScore)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Energy, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Energy)
+                @Html.ValidationMessageFor(model => model.Energy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Hobby, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Hobby)
+                @Html.ValidationMessageFor(model => model.Hobby)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quote, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quote)
+                @Html.ValidationMessageFor(model => model.Quote)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Lati, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Lati)
+                @Html.ValidationMessageFor(model => model.Lati)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Longi, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Longi)
+                @Html.ValidationMessageFor(model => model.Longi)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

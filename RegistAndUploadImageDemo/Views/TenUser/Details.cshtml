@@ -1,0 +1,139 @@
+﻿@model RegistAndUploadImageDemo.Models.TenUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TenUser</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        @if (Model.FilePaths.Any(f => f.FileType == FileType.Avatar))
+        {
+            <dt>
+                Avatar
+            </dt>
+            <dd>
+                <img src="~/File?id=@Model.FilePaths.First(f => f.FileType == FileType.Avatar).FilePathId" alt="avatar" />
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JoinedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JoinedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PCoin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PCoin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OuterScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OuterScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InnerScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InnerScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Energy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Energy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hobby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hobby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lati)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lati)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

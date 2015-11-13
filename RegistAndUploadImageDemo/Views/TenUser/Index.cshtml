@@ -1,0 +1,111 @@
+﻿@model IEnumerable<RegistAndUploadImageDemo.Models.TenUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JoinedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PCoin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OuterScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InnerScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Energy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hobby)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lati)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birthday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JoinedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PCoin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OuterScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InnerScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Energy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hobby)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lati)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

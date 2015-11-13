@@ -1,0 +1,136 @@
+﻿@model RegistAndUploadImageDemo.Models.TenUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TenUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JoinedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JoinedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PCoin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PCoin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OuterScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OuterScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InnerScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InnerScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Energy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Energy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hobby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hobby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lati)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lati)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
